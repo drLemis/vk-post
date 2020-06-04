@@ -1,4 +1,5 @@
 var token = 0;
+var version = 5.57;
 
 function getJSONToFunc(url, func) {
 	fetch(url).then(function (response) {
@@ -11,20 +12,19 @@ function getJSONToFunc(url, func) {
 function checkURIforRedirect() {
 	if (location.hash != "") {
 		var resultArray = location.hash.split("=");
-		token = resultArray[resultArray.length-1];
+		token = resultArray[resultArray.length - 1];
 		login();
 	}
 }
 
 function getToken(groupID) {
-	console.log("GET TOKEN");
-
 	window.location.replace(
 		"https://oauth.vk.com/authorize?client_id=7498813&group_ids=" +
 			groupID +
 			"&display=page&redirect_uri=" +
 			location +
-			"&scope=manage&response_type=token&v=5.107"
+			"&scope=manage,wall&response_type=token&v=" +
+			version
 	);
 }
 
@@ -34,13 +34,31 @@ function login() {
 		url:
 			"https://api.vk.com/method/users.get?PARAMETERS&access_token=" +
 			token +
-			"&v=5.107",
+			"&v=" +
+			version,
 		method: "GET",
 		dataType: "JSONP",
 		crossDomain: true,
 		success: function (data) {
 			console.log(data);
-			document.getElementById("groupID").textContent = "SUCCESS!";
+			postWall();
+		},
+	});
+}
+
+function postWall() {
+	console.log("LOGIN");
+	$.ajax({
+		url:
+			"https://api.vk.com/method/wall.post?owner_id=-1&message='TEST EXAMPLE'&access_token=" +
+			token +
+			"&v=" +
+			version,
+		method: "GET",
+		dataType: "JSONP",
+		crossDomain: true,
+		success: function (data) {
+			console.log(data);
 		},
 	});
 }
