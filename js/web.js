@@ -10,10 +10,8 @@ function getJSONToFunc(url, func) {
 
 function checkURIforRedirect() {
 	if (location.hash != "") {
-		console.log("REDIRECTED");
-		token = location.hash.split("=")[1];
-		console.log(token);
-		document.getElementById("groupID").textContent = "REDIRECTED";
+		var resultArray = location.hash.split("=");
+		token = resultArray[resultArray.length-1];
 		login();
 	}
 }
