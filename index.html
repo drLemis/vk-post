@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<title>VK POST</title>
+
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="css/styleTextBody.css" />
+	</head>
+
+	<body style="overflow-x: hidden;">
+		<div id="index">
+			<div>
+				<center>
+					<div class="textHeader">
+						<label class="textTitle">VK POST TEST PAGE</label>
+					</div>
+				</center>
+			</div>
+			<hr />
+			<div>
+				<label>GROUP ID:</label>
+				<br />
+				<div class="loginCredentials">
+					<input id="groupID"></input>
+					<button onclick="getToken(document.getElementById('groupID').value)" >LOGIN</button>
+				</div>
+				<label id="log"></label>
+			</div>
+			<hr />
+		</div>
+	</body>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
+
+	<script src="js/web.js "></script>
+</html>
