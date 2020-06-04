@@ -1,4 +1,5 @@
 var token = 0;
+var version = 5.57;
 
 function checkURIforRedirect() {
 	if (location.hash != "") {
