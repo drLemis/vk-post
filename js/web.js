@@ -2,7 +2,7 @@ var token = 0;
 
 function checkURIforRedirect() {
 	if (location.hash != "") {
-		token = location.hash.split("=")[0].split("&")[0];
+		token = location.hash.split("=")[1].split("&")[0];
 
 		if (token != "") {
 			document.getElementById("loginButton").setAttribute("hidden", "true");
