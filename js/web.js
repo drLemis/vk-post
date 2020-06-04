@@ -21,6 +21,8 @@ function getAlbumToPictures(groupID, albumID) {
 		{ owner_id: groupID, album_id: albumID, rev: 0, v: version },
 		function (data) {
 			console.log(data);
+			console.log(data.response);
+			console.log(data.response.items);
 			pictures = data.response.items;
 		}
 	);
@@ -35,10 +37,6 @@ function postPicturesToWall(groupID) {
 		clearInterval(timerPostPictures);
 		postWall();
 	}, timerOffset * 10);
-
-	for (let index = 0; index < pictures.length; index++) {
-		const element = array[index];
-	}
 }
 
 function postWall(groupID, photoID) {
@@ -47,8 +45,8 @@ function postWall(groupID, photoID) {
 			"wall.post",
 			{
 				owner_id: groupID,
-				message: "",
-				attachment: "photo"+pictures.pop().id,
+				message: "test",
+				attachment: "photo" + pictures.pop().id,
 				from_group: 1,
 				v: version,
 			},
