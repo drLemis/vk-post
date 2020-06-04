@@ -2,10 +2,10 @@ var version = 5.73;
 
 VK.init(
 	function () {
-		alert("Success!");
+		console.log("VK API success!");
 	},
 	function () {
-		alert("Fail!");
+		console.log("VK API fail!");
 	},
 	"5.107"
 );
@@ -15,7 +15,7 @@ function postWall(groupID, text) {
 		"wall.post",
 		{ owner_id: groupID, message: text, from_group: 1, v: version },
 		function (data) {
-			alert("Post ID:" + data.response.post_id);
+			console.log(data);
 		}
 	);
 }
