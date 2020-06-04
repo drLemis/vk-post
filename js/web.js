@@ -9,7 +9,7 @@ function checkURIforRedirect() {
 
 		getAccessToken();
 
-		if (token != "") {
+		if (token != "" || code != "") {
 			document.getElementById("loginButton").setAttribute("hidden", "true");
 			document.getElementById("mainInterface").removeAttribute("hidden");
 		}
