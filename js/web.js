@@ -1,43 +1,21 @@
-var appID = 7498813;
-var redirect = "https://oauth.vk.com/blank.html";
-var token = 0;
-var version = 5.57;
+var version = 5.73;
 
-function getToken() {
-	window.open(
-		"http://oauth.vk.com/authorize?client_id=" +
-			appID +
-			"&scope=wall,groups&redirect_uri=" +
-			redirect +
-			"&response_type=access_token"
-	);
-}
-
-function useToken(newToken) {
-	token = newToken;
-
-	document.getElementById("loginInterface").setAttribute("hidden", "true");
-	document.getElementById("mainInterface").removeAttribute("hidden");
-}
+VK.init(
+	function () {
+		alert("Success!");
+	},
+	function () {
+		alert("Fail!");
+	},
+	"5.107"
+);
 
 function postWall(groupID, text) {
-	console.log("WALLPOST:" + groupID + ":" + text);
-	console.log("TOKEN:" + token);
-	$.ajax({
-		url:
-			"https://api.vk.com/method/wall.post?owner_id=-" +
-			groupID +
-			"&message=" +
-			text +
-			"&access_token=" +
-			token +
-			"&v=" +
-			version,
-		method: "GET",
-		dataType: "JSONP",
-		crossDomain: true,
-		success: function (data) {
-			console.log(data);
-		},
-	});
+	VK.api(
+		"wall.post",
+		{ owner_id: groupID, message: text, from_group: 1, v: version },
+		function (data) {
+			alert("Post ID:" + data.response.post_id);
+		}
+	);
 }

@@ -18,18 +18,13 @@
 			</div>
 			<hr />
 			<div>
-				<div id="loginInterface">
-					1) <button id=loginButton onclick="getToken()" >GET TOKEN</button>
-					<br />
-					2) <input id="token"></input>
-					<br />
-					3) <button onclick="useToken(document.getElementById('token').value)" >APPLY</button>
-				</div>
-				<div id="mainInterface" hidden=true>
+				<div id="mainInterface">
 					<label>GROUP ID:</label>
-					<br />
 					<input id="groupID"></input>
+					<br />
+					<label>TEXT:</label>
 					<input id="text"></input>
+					<br />
 					<button onclick="postWall(document.getElementById('groupID').value, document.getElementById('text').value)" >POST</button>
 				</div>
 			</div>
@@ -38,6 +33,7 @@
 	</body>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
 
 	<script src="js/web.js "></script>
 </html>
