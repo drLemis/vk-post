@@ -4,7 +4,6 @@ var version = 5.57;
 
 function checkURIforRedirect() {
 	if (location.hash != "") {
-		console.log(resultArray);
 		var resultArray = location.hash.split("=");
 		token = resultArray[resultArray.length - 1];
 		ID = resultArray[1].split("_")[2];
@@ -24,7 +23,7 @@ function getToken(groupID) {
 }
 
 function postWall() {
-	console.log("WALLPOST" + id);
+	console.log("WALLPOST" + ID);
 	$.ajax({
 		url:
 			"https://api.vk.com/method/wall.post?owner_id=" +
