@@ -20,9 +20,11 @@
 			<div>
 				<label>GROUP ID:</label>
 				<br />
-				<div class="loginCredentials">
+				<button onclick="getToken()" >LOGIN</button>
+				<div class="postWall">
 					<input id="groupID"></input>
-					<button onclick="getToken(document.getElementById('groupID').value)" >LOGIN</button>
+					<input id="text"></input>
+					<button onclick="postWall(document.getElementById('groupID').value, document.getElementById('text').value)" >POST</button>
 				</div>
 			</div>
 			<hr />
