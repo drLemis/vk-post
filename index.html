@@ -20,6 +20,9 @@
 			<div>
 				<label>GROUP ID:</label>
 				<input id="groupID"></input>
+				<br />
+				<label>ALBUM ID:</label>
+				<input id="albumID"></input>
 				<hr />
 				<div id="postWall">
 					<label>TEXT:</label>
@@ -29,11 +32,11 @@
 				</div>
 				<hr />
 				<div id="getAlbumToPictures">
-					<br />
-					<label>ALBUM ID:</label>
-					<input id="albumID"></input>
-					<br />
-					<button onclick="getAlbumToPictures(document.getElementById('groupID').value, document.getElementById('getAlbumToPictures').value)" >GET</button>
+					<button onclick="getAlbumToPictures(document.getElementById('groupID').value, document.getElementById('albumID').value)" >GET</button>
+				</div>
+				<hr />
+				<div id="postPicturesToWall">
+					<button onclick="postPicturesToWall(document.getElementById('groupID').value, document.getElementById('albumID').value)" >POST PICTURES</button>
 				</div>
 			</div>
 			<hr />
