@@ -1,43 +1,23 @@
-var code = 0;
+var appID = 7498813;
+var redirect = "https://oauth.vk.com/blank.html";
 var token = 0;
 var version = 5.57;
 
-function checkURIforRedirect() {
-	if (location.hash != "") {
-		token = location.hash.split("=")[1].split("&")[0];
-		code = location.search.split("=")[1];
-
-		getAccessToken();
-
-		if (token != "" || code != "") {
-			document.getElementById("loginButton").setAttribute("hidden", "true");
-			document.getElementById("mainInterface").removeAttribute("hidden");
-		}
-	}
-}
-
-function getCode() {
-	window.location.replace(
-		"https://oauth.vk.com/authorize?client_id=7498813&display=popup&redirect_uri=https://drlemis.github.io/vk-post/&scope=wall,groups&response_type=code&v=" +
-			version
+function getToken() {
+	window.open(
+		"http://oauth.vk.com/authorize?client_id=" +
+			appID +
+			"&scope=wall,groups&redirect_uri=" +
+			redirect +
+			"&response_type=access_token"
 	);
 }
 
-function getAccessToken() {
-	//
-	$.ajax({
-		url:
-			"https://oauth.vk.com/access_token?client_id=7498813&client_secret=5bgyJMq0GzysFMSlLGW3&redirect_uri=https://drlemis.github.io/vk-post/&code=" +
-			code,
-		method: "GET",
-		dataType: "JSONP",
-		crossDomain: true,
-		success: function (data) {
-			console.log("ACCESS");
-			console.log(data);
-			token = data.access_token;
-		},
-	});
+function useToken(newToken) {
+	token = newToken;
+
+	document.getElementById("loginInterface").setAttribute("hidden", "true");
+	document.getElementById("mainInterface").removeAttribute("hidden");
 }
 
 function postWall(groupID, text) {
@@ -61,5 +41,3 @@ function postWall(groupID, text) {
 		},
 	});
 }
-
-checkURIforRedirect();

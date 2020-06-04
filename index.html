@@ -18,10 +18,16 @@
 			</div>
 			<hr />
 			<div>
-				<label>GROUP ID:</label>
-				<br />
-				<button id=loginButton onclick="getCode()" >LOGIN</button>
+				<div id="loginInterface">
+					1) <button id=loginButton onclick="getToken()" >GET TOKEN</button>
+					<br />
+					2) <input id="token"></input>
+					<br />
+					3) <button onclick="useToken(document.getElementById('token').value)" >APPLY</button>
+				</div>
 				<div id="mainInterface" hidden=true>
+					<label>GROUP ID:</label>
+					<br />
 					<input id="groupID"></input>
 					<input id="text"></input>
 					<button onclick="postWall(document.getElementById('groupID').value, document.getElementById('text').value)" >POST</button>
