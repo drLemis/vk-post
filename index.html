@@ -18,14 +18,22 @@
 			</div>
 			<hr />
 			<div>
-				<div id="mainInterface">
-					<label>GROUP ID:</label>
-					<input id="groupID"></input>
-					<br />
+				<label>GROUP ID:</label>
+				<input id="groupID"></input>
+				<hr />
+				<div id="postWall">
 					<label>TEXT:</label>
 					<input id="text"></input>
 					<br />
 					<button onclick="postWall(document.getElementById('groupID').value, document.getElementById('text').value)" >POST</button>
+				</div>
+				<hr />
+				<div id="getAlbumToPictures">
+					<br />
+					<label>ALBUM ID:</label>
+					<input id="albumID"></input>
+					<br />
+					<button onclick="getAlbumToPictures(document.getElementById('groupID').value, document.getElementById('getAlbumToPictures').value)" >GET</button>
 				</div>
 			</div>
 			<hr />

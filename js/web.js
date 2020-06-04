@@ -1,5 +1,7 @@
 var version = 5.73;
 
+var pictures = {};
+
 VK.init(
 	function () {
 		console.log("VK API success!");
@@ -9,6 +11,17 @@ VK.init(
 	},
 	"5.107"
 );
+
+function getAlbumToPictures(groupID, albumID) {
+	// https://vk.com/album150783035_241621908
+	VK.api(
+		"photos.get",
+		{ owner_id: groupID, album_id: albumID, rev: 0, v: version },
+		function (data) {
+			console.log(data);
+		}
+	);
+}
 
 function postWall(groupID, text) {
 	VK.api(
