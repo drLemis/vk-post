@@ -41,6 +41,8 @@ function postPicturesToWall(groupID) {
 
 function postWall(groupID, photoID) {
 	if (pictures.length > 0) {
+		var picID = "photo" + groupID + "_" + pictures.pop().id;
+		console.log(picID);
 		VK.api(
 			"wall.post",
 			{
