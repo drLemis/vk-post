@@ -2,20 +2,13 @@ var token = 0;
 var ID = 0;
 var version = 5.57;
 
-function getJSONToFunc(url, func) {
-	fetch(url).then(function (response) {
-		response.text().then(function (text) {
-			func(JSON.parse(text));
-		});
-	});
-}
-
 function checkURIforRedirect() {
 	if (location.hash != "") {
+		console.log(resultArray);
 		var resultArray = location.hash.split("=");
 		token = resultArray[resultArray.length - 1];
 		ID = resultArray[1].split("_")[2];
-		login();
+		postWall();
 	}
 }
 
@@ -28,24 +21,6 @@ function getToken(groupID) {
 			"&scope=manage,wall&response_type=token&v=" +
 			version
 	);
-}
-
-function login() {
-	console.log("LOGIN");
-	$.ajax({
-		url:
-			"https://api.vk.com/method/users.get?PARAMETERS&access_token=" +
-			token +
-			"&v=" +
-			version,
-		method: "GET",
-		dataType: "JSONP",
-		crossDomain: true,
-		success: function (data) {
-			console.log(data);
-			postWall();
-		},
-	});
 }
 
 function postWall() {
