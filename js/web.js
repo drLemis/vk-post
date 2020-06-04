@@ -4,6 +4,11 @@ var version = 5.57;
 function checkURIforRedirect() {
 	if (location.hash != "") {
 		token = location.hash.split("=")[0].split("&")[0];
+
+		if (token != "") {
+			document.getElementById("loginButton").setAttribute("hidden", "true");
+			document.getElementById("mainInterface").removeAttribute("hidden");
+		}
 	}
 }
 
@@ -15,7 +20,7 @@ function getToken() {
 }
 
 function postWall(groupID, text) {
-	console.log("WALLPOST" + ID);
+	console.log("WALLPOST:" + groupID + ":" + text);
 	$.ajax({
 		url:
 			"https://api.vk.com/method/wall.post?owner_id=-" +

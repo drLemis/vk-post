@@ -20,8 +20,8 @@
 			<div>
 				<label>GROUP ID:</label>
 				<br />
-				<button onclick="getToken()" >LOGIN</button>
-				<div class="postWall">
+				<button id=loginButton onclick="getToken()" >LOGIN</button>
+				<div id="mainInterface" hidden=true>
 					<input id="groupID"></input>
 					<input id="text"></input>
 					<button onclick="postWall(document.getElementById('groupID').value, document.getElementById('text').value)" >POST</button>
