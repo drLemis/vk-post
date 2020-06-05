@@ -8,7 +8,7 @@ var timePost;
 var errorPost;
 
 var pictures = {};
-var times = {};
+var times = [];
 
 function processInput() {
 	groupID = document.getElementById("groupID").value;
@@ -42,7 +42,7 @@ function getAlbumToPictures() {
 }
 
 function makeTimes() {
-	var times = [];
+	times = [];
 
 	var unixtimeStart = parseInt(
 		(new Date(datePost).getTime() / 1000).toFixed(0)
@@ -51,23 +51,25 @@ function makeTimes() {
 	var subindex = 0;
 
 	for (let index = 0; index < pictures.Length; index++) {
-		times[index] =
+		times.push(
 			unixtimeStart +
-			timePost[subindex] * 360 +
-			getRandomInt(-errorPost, errorPost);
+				timePost[subindex] * 360 +
+				getRandomInt(-errorPost, errorPost)
+		);
 
 		if (subindex++ >= timePost.Length) {
 			subindex = 0;
 			unixtimeStart += 86400; //new day
 		}
 	}
+
+	console.log(times);
 }
 
 function postWall() {
 	if (pictures.length > 0) {
 		var picID = "photo" + groupID + "_" + pictures.pop().id;
 
-		var timeToPost;
 		VK.api(
 			"wall.post",
 			{
