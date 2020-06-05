@@ -42,7 +42,6 @@ function getAlbumToPictures() {
 }
 
 function makeTimes() {
-	var tempTimes = {};
 	var times = {};
 
 	var unixtimeStart = parseInt(
@@ -52,11 +51,10 @@ function makeTimes() {
 	var subindex = 0;
 
 	for (let index = 0; index < pictures.Length; index++) {
-		times.Add(
+		times[index] =
 			unixtimeStart +
-				timePost[subindex] * 360 +
-				getRandomInt(-errorPost, errorPost)
-		);
+			timePost[subindex] * 360 +
+			getRandomInt(-errorPost, errorPost);
 
 		if (subindex++ >= timePost.Length) {
 			subindex = 0;
