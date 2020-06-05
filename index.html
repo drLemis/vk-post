@@ -27,8 +27,17 @@
 				<label>TO A GROUP ID:</label>
 				<input id="wallID"></input>
 				<hr />
+				<label>FROM DATE:</label>
+				<input type="date" id="datePost"></input>
+				<br />
+				<label>TIMES (h,h):</label>
+				<input id="timePost"></input>
+				<br />
+				<label>ERROR (m):</label>
+				<input id="errorPost"></input>
+				<hr />
 				<div id="getAlbumToPictures">
-					<button onclick="getAlbumToPictures(document.getElementById('groupID').value, document.getElementById('albumID').value, document.getElementById('wallID').value)" >GET AND POST</button>
+					<button onclick="processInput(); getAlbumToPictures();" >GET AND POST</button>
 				</div>
 			</div>
 			<hr />
