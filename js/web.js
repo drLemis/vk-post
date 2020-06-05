@@ -1,8 +1,5 @@
 var version = 5.73;
-
 var pictures = {};
-
-var timerPostPictures;
 
 VK.init(
 	function () {
@@ -14,40 +11,32 @@ VK.init(
 	version
 );
 
-function getAlbumToPictures(groupID, albumID) {
+function getAlbumToPictures(groupID, albumID, wallID) {
 	VK.api(
 		"photos.get",
 		{ owner_id: groupID, album_id: albumID, rev: 0, v: version },
 		function (data) {
 			pictures = data.response.items;
+			postWall(groupID, wallID);
 		}
 	);
 }
 
-function postPicturesToWall(groupID) {
-	var timerOffset = 500;
-
-	timerPostPictures = setInterval(() => postWall(groupID), timerOffset);
-}
-
-function postWall(groupID) {
+function postWall(groupID, wallID) {
 	if (pictures.length > 0) {
 		var picID = "photo" + groupID + "_" + pictures.pop().id;
 		console.log(picID);
 		VK.api(
 			"wall.post",
 			{
-				owner_id: groupID,
-				message: pictures.length,
+				owner_id: wallID,
 				attachment: picID,
 				from_group: 1,
 				v: version,
 			},
 			function (data) {
-				console.log(data);
+				postWall(groupID, wallID);
 			}
 		);
-	} else {
-		clearInterval(timerPostPictures);
 	}
 }

@@ -18,25 +18,17 @@
 			</div>
 			<hr />
 			<div>
-				<label>GROUP ID:</label>
+				<label>FROM GROUP ID:</label>
 				<input id="groupID"></input>
 				<br />
-				<label>ALBUM ID:</label>
+				<label>FROM ALBUM ID:</label>
 				<input id="albumID"></input>
-				<hr />
-				<div id="postWall">
-					<label>TEXT:</label>
-					<input id="text"></input>
-					<br />
-					<button onclick="postWall(document.getElementById('groupID').value, document.getElementById('text').value)" >POST</button>
-				</div>
+				<br />
+				<label>TO A GROUP ID:</label>
+				<input id="wallID"></input>
 				<hr />
 				<div id="getAlbumToPictures">
-					<button onclick="getAlbumToPictures(document.getElementById('groupID').value, document.getElementById('albumID').value)" >GET</button>
-				</div>
-				<hr />
-				<div id="postPicturesToWall">
-					<button onclick="postPicturesToWall(document.getElementById('groupID').value, document.getElementById('albumID').value)" >POST PICTURES</button>
+					<button onclick="getAlbumToPictures(document.getElementById('groupID').value, document.getElementById('albumID').value, document.getElementById('wallID').value)" >GET AND POST</button>
 				</div>
 			</div>
 			<hr />
