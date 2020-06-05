@@ -33,9 +33,9 @@ VK.init(
 function getAlbumToPictures() {
 	VK.api(
 		"photos.get",
-		{ owner_id: groupID, album_id: albumID, rev: 0, v: version },
+		{ owner_id: groupID, album_id: albumID, rev: 0, count: 1000, v: version },
 		function (data) {
-			if (data.responce == undefined) {
+			if (data.response == undefined) {
 				console.error(data);
 			} else {
 				pictures = data.response.items;
