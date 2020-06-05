@@ -22,11 +22,10 @@ function processInput() {
 }
 
 VK.init(
+	function () {},
 	function () {
-		console.log("VK API success!");
-	},
-	function () {
-		console.log("VK API fail!");
+		console.error("VK API fail!");
+		document.getElementById("mainInterface").setAttribute("hidden", "true");
 	},
 	version
 );
@@ -36,9 +35,13 @@ function getAlbumToPictures() {
 		"photos.get",
 		{ owner_id: groupID, album_id: albumID, rev: 0, v: version },
 		function (data) {
-			pictures = data.response.items;
-			makeTimes();
-			postWall();
+			if (data.responce == undefined) {
+				console.error(data);
+			} else {
+				pictures = data.response.items;
+				makeTimes();
+				postWall();
+			}
 		}
 	);
 }
