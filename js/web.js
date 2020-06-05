@@ -5,6 +5,7 @@ var albumID;
 var wallID;
 var datePost;
 var timePost;
+var timeZone;
 var errorPost;
 
 var pictures = {};
@@ -16,6 +17,7 @@ function processInput() {
 	wallID = document.getElementById("wallID").value;
 	datePost = document.getElementById("datePost").value;
 	timePost = document.getElementById("timePost").value.split(",");
+	timeZone = parseInt(document.getElementById("timeZone").value);
 	errorPost = document.getElementById("errorPost").value * 60;
 }
 
@@ -50,20 +52,19 @@ function makeTimes() {
 
 	var subindex = 0;
 
-	for (let index = 0; index < pictures.Length; index++) {
-		times.push(
-			unixtimeStart +
-				timePost[subindex] * 360 +
-				getRandomInt(-errorPost, errorPost)
-		);
+	for (let index = 0; index < pictures.length; index++) {
+		var rnd = getRandomInt(-errorPost, errorPost);
+		var offset = (timePost[subindex] + timeZone) * 3600; // h -> s
+		var result = unixtimeStart + offset + rnd;
 
-		if (subindex++ >= timePost.Length) {
+		times.push(result);
+
+		subindex++;
+		if (subindex >= timePost.length) {
 			subindex = 0;
 			unixtimeStart += 86400; //new day
 		}
 	}
-
-	console.log(times);
 }
 
 function postWall() {
