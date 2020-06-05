@@ -42,7 +42,7 @@ function getAlbumToPictures() {
 }
 
 function makeTimes() {
-	var times = {};
+	var times = [];
 
 	var unixtimeStart = parseInt(
 		(new Date(datePost).getTime() / 1000).toFixed(0)
