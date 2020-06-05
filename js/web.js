@@ -17,7 +17,7 @@ function processInput() {
 	wallID = document.getElementById("wallID").value;
 	datePost = document.getElementById("datePost").value;
 	timePost = document.getElementById("timePost").value.split(",");
-	timeZone = parseInt(document.getElementById("timeZone").value);
+	timeZone = parseInt(document.getElementById("timeZone").value) * -1;
 	errorPost = document.getElementById("errorPost").value * 60;
 }
 
@@ -54,7 +54,7 @@ function makeTimes() {
 
 	for (let index = 0; index < pictures.length; index++) {
 		var rnd = getRandomInt(-errorPost, errorPost);
-		var offset = (timePost[subindex] + timeZone) * 3600; // h -> s
+		var offset = (parseInt(timePost[subindex]) + timeZone) * 3600; // h -> s
 		var result = unixtimeStart + offset + rnd;
 
 		times.push(result);
